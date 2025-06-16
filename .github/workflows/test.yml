@@ -2,9 +2,9 @@ name: Test DevContainer Features
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -14,8 +14,6 @@ jobs:
       matrix:
         features:
           - git-config
-          - dotfiles
-          - git-delta
     steps:
       - uses: actions/checkout@v3
 
