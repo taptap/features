@@ -1,0 +1,31 @@
+{
+  "ubuntu-latest": {
+    "image": "ubuntu:latest",
+    "features": {
+      "ghcr.io/devcontainers/features/git:1": {
+        "version": "latest",
+        "ppa": true
+      },
+      "git-config": {}
+    }
+  },
+  "ubuntu-focal": {
+    "image": "ubuntu:focal",
+    "features": {
+      "ghcr.io/devcontainers/features/git:1": {
+        "version": "latest",
+        "ppa": true
+      },
+      "git-config": {}
+    }
+  },
+  "debian-bullseye": {
+    "image": "debian:bullseye",
+    "features": {
+      "ghcr.io/devcontainers/features/git:1": {
+        "version": "2.49.0"
+      },
+      "git-config": {}
+    }
+  }
+}

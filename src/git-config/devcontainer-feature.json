@@ -1,0 +1,16 @@
+{
+  "id": "git-config",
+  "version": "1.0.0",
+  "name": "Git organization-wide config",
+  "description": "Configure Git (>=2.48.0) with organization-wide settings by enforcing /usr/local/etc/gitconfig & gitignore. Requires Git to be pre-installed.",
+  "documentationURL": "https://github.com/taptap/features/tree/main/src/git-config",
+  "installsAfter": ["ghcr.io/devcontainers/features/git"],
+  "options": {
+    "minGitVersion": {
+      "type": "string",
+      "default": "2.49.0",
+      "enum": ["2.48.0", "2.49.0", "2.50.0"],
+      "description": "Minimum Git version required to use this feature."
+    }
+  }
+}

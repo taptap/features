@@ -1,0 +1,17 @@
+core.autocrlf false
+core.safecrlf true
+core.eol lf
+core.filemode false
+color.ui auto
+init.defaultBranch main
+push.default simple
+fetch.prune true
+fetch.pruneTags true
+fetch.parallel 4
+gc.auto 256
+gc.writeCommitGraph true
+merge.conflictStyle diff3
+rebase.autoStash true
+advice.detachedHead false
+advice.statusHints false
+safe.directory "/workspace"

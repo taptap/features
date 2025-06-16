@@ -1,0 +1,40 @@
+name: Release DevContainer Features
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'src/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+  pull-requests: write
+
+jobs:
+  release:
+    if: github.repository == 'taptap/features'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Generate Documentation and Publish
+        uses: devcontainers/action@v1
+        with:
+          generate-docs: true
+          publish-features: true
+          base-path-to-features: ./src
+          oci-registry: ghcr.io
+          features-namespace: ${{ github.repository_owner }}/features
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create PR for Documentation
+        uses: devcontainers/action@v1
+        with:
+          generate-docs: true
+          base-path-to-features: ./src
+          pr-mode: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

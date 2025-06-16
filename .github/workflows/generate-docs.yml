@@ -1,0 +1,44 @@
+name: Generate Documentation
+
+on:
+  push:
+    paths:
+      - "src/**/devcontainer-feature.json"
+      - "src/**/NOTES.md"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate Documentation
+        id: generate
+        uses: devcontainers/action@v1
+        with:
+          generate-docs: true
+          base-path-to-features: ./src
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create PR for Documentation Updates
+        if: steps.generate.outputs.features-documentation-updated == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git checkout -b automated-docs-update-${{ github.run_id }}
+          git add src/**/README.md
+          git commit -m "📝 [auto] Update feature documentation"
+          git push origin automated-docs-update-${{ github.run_id }}
+
+          gh pr create \
+            --title "📝 Update feature documentation" \
+            --body "This PR was automatically generated to update feature documentation based on devcontainer-feature.json and NOTES.md files." \
+            --base main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

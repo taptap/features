@@ -1,0 +1,50 @@
+# 🖥️  Operating-system noise
+
+## macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+.Spotlight-V100
+.Trashes
+._*
+
+## Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux / Unix
+*~
+
+# ✍️  Editor & IDE artefacts (cross-project, purely 个人)
+
+## Vim / NeoVim
+.*.sw[a-p]
+.vim/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# JetBrains IDEs (IntelliJ / WebStorm / GoLand…)
+.idea/
+
+# Sublime / TextMate
+*.sublime-*
+
+# Emacs
+*~
+.#*
+
+# 🧹  Generic backups / temps / diagnostics
+*.bak
+*.tmp
+*.temp
+*.old
+*.orig
+*.log
+*.trace
+*.stackdump
+.nfs*
