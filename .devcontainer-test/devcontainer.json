@@ -1,0 +1,9 @@
+{
+  "image": "debian:bullseye",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest",
+      "ppa": false
+    }
+  }
+}
